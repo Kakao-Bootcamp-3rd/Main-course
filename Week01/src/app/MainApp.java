@@ -12,6 +12,21 @@ public class MainApp {
         Scanner sc = new Scanner(System.in);
         AppController appController = new AppController(sc);
 
-        appController.run();
+
+
+
+        Thread t = new Thread(() -> {
+        try {
+            while (true) {
+                System.out.print("\n[Weather] Cloud\n");
+                Thread.sleep(5000); // 1초마다 반복
+            }
+        } catch (InterruptedException e) {
+            return;
+        }
+});
+
+        t.start();
+        appController.run(t);
     }
 }

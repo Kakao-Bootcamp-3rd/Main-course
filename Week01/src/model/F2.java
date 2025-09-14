@@ -1,5 +1,6 @@
 package model;
 
+
 import constants.CarSpecs;
 
 import java.util.Scanner;

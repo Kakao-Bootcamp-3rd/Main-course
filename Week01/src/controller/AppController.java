@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class AppController {
     private final Scanner sc;
-    private final CarChoiceController carChooser;
+    private final CarChoiceController carChooser;   // 이거 하나 밖이 사용하지 않을 것임, 재할당 x
     private final SimulatorController simulator;
 
     public AppController(Scanner sc) {
@@ -14,7 +14,7 @@ public class AppController {
         this.simulator = new SimulatorController(sc);
     }
 
-    public void run() {
+    public void run(Thread t) {
         while (true) {
             Car car = carChooser.chooseCar();   // ① 차량 선택
             simulator.run(car);              // ② 시뮬레이터 실행
@@ -23,6 +23,7 @@ public class AppController {
             String ans = sc.next().trim().toLowerCase();
             if (!ans.equals("y")) {
                 System.out.println("[Exit Program]");
+                t.interrupt();
                 break;
             }
         }
