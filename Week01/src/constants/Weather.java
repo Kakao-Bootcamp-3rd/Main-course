@@ -4,7 +4,7 @@ public enum Weather {
     SUNNY("🌞 Sunny", -0),
     CLOUD("☁️ Cloud", 0),
     RAIN("🌧 Rain", -5),
-    SNOW("❄️Snow", -10);
+    SNOW("❄️ Snow", -10);
 
     private final String label;  // ← 이게 label 필드
     private final int minusSpeed;  // ← 이게 label 필드
