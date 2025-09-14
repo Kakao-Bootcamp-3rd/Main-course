@@ -23,7 +23,8 @@ Week01/
 │  │  ├─ CarSpecs.java               # 자동차 스펙 상수 정의
 │  │  └─ Weather.java                # 날씨 Enum 클래스
 │  ├─ controller/
-│  │  ├─ Thread/                     # 날씨 스레드 제어
+│  │  ├─ Thread/                     
+│  │  │  └─ WeatherController        # 날씨 스레드 제어
 │  │  ├─ AppController.java
 │  │  ├─ CarChoiceController.java
 │  │  └─ SimulatorController.java
@@ -36,3 +37,4 @@ Week01/
 │     ├─ F1.java
 │     └─ F2.java
 └─ README.md
+
