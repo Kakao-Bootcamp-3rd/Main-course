@@ -1,4 +1,4 @@
-# 🚗 Racing Car Simulator (Week01)
+# 🚗 Racing Car Simulator
 
 ![status](https://img.shields.io/badge/Status-Completed-4caf50?style=flat-square)
 ![lang](https://img.shields.io/badge/Language-Java-orange?style=flat-square)
