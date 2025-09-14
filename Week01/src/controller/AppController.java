@@ -22,7 +22,12 @@ public class AppController {
             WeatherController weatherController = new WeatherController(car);
             weatherController.run();
 
-            simulator.run(car);              // ② 시뮬레이터 실행
+            try{
+                simulator.run(car);              // ② 시뮬레이터 실행
+            }
+            finally {
+                weatherController.stop();
+            }
 
             System.out.print("\nDo you want to select a Car again? (y/n): ");
             String ans = sc.next().trim().toLowerCase();
@@ -30,8 +35,6 @@ public class AppController {
                 System.out.println("[Exit Program]");
                 break;
             }
-            weatherController.stop();
-
         }
     }
 }
