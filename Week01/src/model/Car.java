@@ -1,6 +1,7 @@
 package model;
 
 
+
 interface Drivable{
     void axel();
     void brake();
@@ -15,7 +16,12 @@ interface Moniter{
     void showScreen();
 }
 
-public abstract class Car implements Drivable, Moniter {
+interface BasicSpeedControl{
+    void speedUp(int km);
+    void speedDown(int km);
+}
+
+public abstract class Car implements Drivable, Moniter, BasicSpeedControl {
     protected String name;
     protected int speed;
     protected int axelSpeed;
@@ -31,9 +37,12 @@ public abstract class Car implements Drivable, Moniter {
         this.maxSpeed = maxSpeed;
     }
 
+    public synchronized int getSpeed() {
+        return speed;
+    }
 
     @Override
-    public void showScreen(){
+    public synchronized void showScreen(){
         System.out.println();
         showCarName();
         System.out.println();
@@ -44,29 +53,38 @@ public abstract class Car implements Drivable, Moniter {
     }
 
     @Override
-    public void axel(){
+    public synchronized void axel(){
         this.speed=Math.min(this.speed+this.axelSpeed,this.maxSpeed);
     }
 
 
     @Override
-    public void brake(){
-        this.speed=Math.max(0,this.speed-30);
+    public synchronized void brake(){
+        this.speed=Math.max(0,this.speed-this.breakSpeed);
     }
 
 
     @Override
     public void showCarName(){
-        System.out.print("Car Name : "+this.name+" (Max Speed :"+this.maxSpeed+")");
+        System.out.print(
+                "🚗\nCar Name : "+this.name+
+                " (Max Speed :"+this.maxSpeed+")");
     }
 
     @Override
-    public void showSpeed(){
+    public synchronized void showSpeed(){
         System.out.print("Now Speed : \"" + this.speed+"\"");
     }
 
+    @Override
+    public synchronized  void speedUp(int km){
+        this.speed=Math.min(this.speed+this.axelSpeed,this.maxSpeed);
+    }
 
-
+    @Override
+    public synchronized  void speedDown(int km){
+        this.speed=Math.max(0,this.speed-km);
+    }
 }
 
 

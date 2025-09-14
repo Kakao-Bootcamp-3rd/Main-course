@@ -19,7 +19,7 @@ public class AppController {
         while (true) {
             Car car = carChooser.chooseCar();   // ① 차량 선택
 
-            WeatherController weatherController = new WeatherController();
+            WeatherController weatherController = new WeatherController(car);
             weatherController.run();
 
             simulator.run(car);              // ② 시뮬레이터 실행
