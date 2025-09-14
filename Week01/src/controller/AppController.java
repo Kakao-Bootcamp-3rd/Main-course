@@ -1,5 +1,6 @@
 package controller;
 
+import controller.Thread.WeatherController;
 import model.Car;
 import java.util.Scanner;
 
@@ -14,18 +15,23 @@ public class AppController {
         this.simulator = new SimulatorController(sc);
     }
 
-    public void run(Thread t) {
+    public void run() {
         while (true) {
             Car car = carChooser.chooseCar();   // ① 차량 선택
+
+            WeatherController weatherController = new WeatherController();
+            weatherController.run();
+
             simulator.run(car);              // ② 시뮬레이터 실행
 
             System.out.print("\nDo you want to select a Car again? (y/n): ");
             String ans = sc.next().trim().toLowerCase();
             if (!ans.equals("y")) {
                 System.out.println("[Exit Program]");
-                t.interrupt();
                 break;
             }
+            weatherController.stop();
+
         }
     }
 }

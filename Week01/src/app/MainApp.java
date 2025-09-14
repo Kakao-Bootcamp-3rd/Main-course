@@ -1,10 +1,13 @@
 package app;
 
+import constants.Weather;
 import controller.AppController;
 import controller.CarChoiceController;
+import controller.Thread.WeatherController;
 import model.Car;
 import model.F1;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class MainApp {
@@ -14,19 +17,6 @@ public class MainApp {
 
 
 
-
-        Thread t = new Thread(() -> {
-        try {
-            while (true) {
-                System.out.print("\n[Weather] Cloud\n");
-                Thread.sleep(5000); // 1초마다 반복
-            }
-        } catch (InterruptedException e) {
-            return;
-        }
-});
-
-        t.start();
-        appController.run(t);
+        appController.run();
     }
 }
